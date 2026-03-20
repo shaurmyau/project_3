@@ -194,8 +194,8 @@
 
 ### Локальный запуск
 1. Клонировать репозиторий:
-   git clone https://github.com/ваш-username/название-репозитория.git
-   cd название-репозитория
+   git clone https://github.com/shaurmyau/project_3.git
+   cd project_3
 
 2. Создать виртуальное окружение и установить зависимости:
    python -m venv venv
