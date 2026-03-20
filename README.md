@@ -104,12 +104,12 @@
 
 Переменные окружения
 
-    Переменная	Описание	По умолчанию
-    BOT_TOKEN	Токен телеграм-бота	обязательное
-    DATABASE_URL	URL подключения к PostgreSQL	postgresql://localhost/bot_db
-    REDIS_URL	URL подключения к Redis	redis://localhost
-    ADMIN_IDS	Список ID администраторов через запятую	
-    DEBUG	Режим отладки	False
+    Переменная         Описание
+    BOT_TOKEN	       Токен телеграм-бота
+    DATABASE_URL	   URL подключения к PostgreSQL
+    REDIS_URL	       URL подключения к Redis
+    ADMIN_IDS	       Список ID администраторов через запятую
+    DEBUG	           Режим отладки
     
 Тестирование
 
