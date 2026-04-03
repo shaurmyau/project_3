@@ -1,0 +1,26 @@
+dating_bot/
+├── bot/
+│   ├── __init__.py
+│   ├── handlers/
+│   │   ├── __init__.py
+│   │   ├── registration.py
+│   │   └── start.py
+│   ├── keyboards/
+│   │   ├── __init__.py
+│   │   └── reply_keyboards.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── database.py
+│   │   ├── user.py
+│   │   └── profile.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   └── user_service.py
+│   └── states/
+│       ├── __init__.py
+│       └── registration_states.py
+├── config.py
+├── bot.py
+├── requirements.txt
+├── .env.example
+└── .env
