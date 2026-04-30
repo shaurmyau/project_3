@@ -1,0 +1,135 @@
+shop_app  | 2026-04-16 09:53:19,510 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+shop_app  | 2026-04-16 09:53:19,510 INFO sqlalchemy.engine.Engine [raw sql] {}
+shop_app  | 2026-04-16 09:53:19,511 INFO sqlalchemy.engine.Engine select current_schema()
+shop_app  | 2026-04-16 09:53:19,511 INFO sqlalchemy.engine.Engine [raw sql] {}
+shop_app  | 2026-04-16 09:53:19,512 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+shop_app  | 2026-04-16 09:53:19,512 INFO sqlalchemy.engine.Engine [raw sql] {}
+shop_app  | 2026-04-16 09:53:19,513 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+shop_app  | 2026-04-16 09:53:19,516 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+shop_app  | FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+shop_app  | WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+shop_app  | 2026-04-16 09:53:19,516 INFO sqlalchemy.engine.Engine [generated in 0.00015s] {'table_name': 'customers', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+shop_app  | 2026-04-16 09:53:19,519 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+shop_app  | FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+shop_app  | WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+shop_app  | 2026-04-16 09:53:19,519 INFO sqlalchemy.engine.Engine [cached since 0.003137s ago] {'table_name': 'products', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+shop_app  | 2026-04-16 09:53:19,519 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+shop_app  | FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+shop_app  | WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+shop_app  | 2026-04-16 09:53:19,519 INFO sqlalchemy.engine.Engine [cached since 0.003741s ago] {'table_name': 'orders', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+shop_app  | 2026-04-16 09:53:19,520 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+shop_app  | FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+shop_app  | WHERE pg_catalog.pg_class.relname = %(table_name)s AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s, %(param_2)s, %(param_3)s, %(param_4)s, %(param_5)s]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s
+shop_app  | 2026-04-16 09:53:19,520 INFO sqlalchemy.engine.Engine [cached since 0.004286s ago] {'table_name': 'order_items', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+shop_app  | 2026-04-16 09:53:19,521 INFO sqlalchemy.engine.Engine 
+shop_app  | CREATE TABLE customers (
+shop_app  | 	customer_id SERIAL NOT NULL, 
+shop_app  | 	first_name VARCHAR(50) NOT NULL, 
+shop_app  | 	last_name VARCHAR(50) NOT NULL, 
+shop_app  | 	email VARCHAR(100) NOT NULL, 
+shop_app  | 	PRIMARY KEY (customer_id), 
+shop_app  | 	UNIQUE (email)
+shop_app  | )
+shop_app  | 
+shop_app  | 
+shop_app  | 2026-04-16 09:53:19,521 INFO sqlalchemy.engine.Engine [no key 0.00008s] {}
+shop_app  | 2026-04-16 09:53:19,533 INFO sqlalchemy.engine.Engine 
+shop_app  | CREATE TABLE products (
+shop_app  | 	product_id SERIAL NOT NULL, 
+shop_app  | 	product_name VARCHAR(100) NOT NULL, 
+shop_app  | 	price NUMERIC(10, 2) NOT NULL, 
+shop_app  | 	PRIMARY KEY (product_id)
+shop_app  | )
+shop_app  | 
+shop_app  | 
+shop_app  | 2026-04-16 09:53:19,533 INFO sqlalchemy.engine.Engine [no key 0.00010s] {}
+shop_app  | 2026-04-16 09:53:19,539 INFO sqlalchemy.engine.Engine 
+shop_app  | CREATE TABLE orders (
+shop_app  | 	order_id SERIAL NOT NULL, 
+shop_app  | 	customer_id INTEGER NOT NULL, 
+shop_app  | 	order_date TIMESTAMP WITHOUT TIME ZONE DEFAULT now(), 
+shop_app  | 	total_amount NUMERIC(10, 2), 
+shop_app  | 	PRIMARY KEY (order_id), 
+shop_app  | 	FOREIGN KEY(customer_id) REFERENCES customers (customer_id)
+shop_app  | )
+shop_app  | 
+shop_app  | 
+shop_app  | 2026-04-16 09:53:19,539 INFO sqlalchemy.engine.Engine [no key 0.00009s] {}
+shop_app  | 2026-04-16 09:53:19,546 INFO sqlalchemy.engine.Engine 
+shop_app  | CREATE TABLE order_items (
+shop_app  | 	order_item_id SERIAL NOT NULL, 
+shop_app  | 	order_id INTEGER NOT NULL, 
+shop_app  | 	product_id INTEGER NOT NULL, 
+shop_app  | 	quantity INTEGER NOT NULL, 
+shop_app  | 	subtotal NUMERIC(10, 2) NOT NULL, 
+shop_app  | 	PRIMARY KEY (order_item_id), 
+shop_app  | 	FOREIGN KEY(order_id) REFERENCES orders (order_id), 
+shop_app  | 	FOREIGN KEY(product_id) REFERENCES products (product_id)
+shop_app  | )
+shop_app  | 
+shop_app  | 
+shop_app  | 2026-04-16 09:53:19,546 INFO sqlalchemy.engine.Engine [no key 0.00010s] {}
+shop_app  | 2026-04-16 09:53:19,553 INFO sqlalchemy.engine.Engine COMMIT
+shop_app  | 2026-04-16 09:53:19,562 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+shop_app  | 2026-04-16 09:53:19,564 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+shop_app  | FROM (SELECT customers.customer_id AS customers_customer_id, customers.first_name AS customers_first_name, customers.last_name AS customers_last_name, customers.email AS customers_email 
+shop_app  | FROM customers) AS anon_1
+shop_app  | 2026-04-16 09:53:19,564 INFO sqlalchemy.engine.Engine [generated in 0.00011s] {}
+shop_app  | 2026-04-16 09:53:19,567 INFO sqlalchemy.engine.Engine INSERT INTO customers (first_name, last_name, email) VALUES (%(first_name)s, %(last_name)s, %(email)s) RETURNING customers.customer_id
+shop_app  | 2026-04-16 09:53:19,567 INFO sqlalchemy.engine.Engine [generated in 0.00012s] {'first_name': 'Иван', 'last_name': 'Петров', 'email': 'ivan@example.com'}
+shop_app  | 2026-04-16 09:53:19,568 INFO sqlalchemy.engine.Engine INSERT INTO products (product_name, price) SELECT p0::VARCHAR, p1::NUMERIC(10, 2) FROM (VALUES (%(product_name__0)s, %(price__0)s, 0), (%(product_name__1)s, %(price__1)s, 1)) AS imp_sen(p0, p1, sen_counter) ORDER BY sen_counter RETURNING products.product_id, products.product_id AS product_id__1
+shop_app  | 2026-04-16 09:53:19,568 INFO sqlalchemy.engine.Engine [generated in 0.00005s (insertmanyvalues) 1/1 (ordered)] {'price__0': Decimal('50000.00'), 'product_name__0': 'Ноутбук', 'price__1': Decimal('1500.00'), 'product_name__1': 'Мышь'}
+shop_app  | 2026-04-16 09:53:19,570 INFO sqlalchemy.engine.Engine COMMIT
+shop_app  | 
+shop_app  | === Сценарий 1: Создание заказа ===
+shop_app  | 2026-04-16 09:53:19,573 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+shop_app  | 2026-04-16 09:53:19,573 INFO sqlalchemy.engine.Engine INSERT INTO orders (customer_id, total_amount) VALUES (%(customer_id)s, %(total_amount)s) RETURNING orders.order_id, orders.order_date
+shop_app  | 2026-04-16 09:53:19,573 INFO sqlalchemy.engine.Engine [generated in 0.00012s] {'customer_id': 1, 'total_amount': 0.0}
+shop_app  | 2026-04-16 09:53:19,576 INFO sqlalchemy.engine.Engine SELECT products.product_id AS products_product_id, products.product_name AS products_product_name, products.price AS products_price 
+shop_app  | FROM products 
+shop_app  | WHERE products.product_id = %(pk_1)s
+shop_app  | 2026-04-16 09:53:19,576 INFO sqlalchemy.engine.Engine [generated in 0.00011s] {'pk_1': 1}
+shop_app  | 2026-04-16 09:53:19,577 INFO sqlalchemy.engine.Engine INSERT INTO order_items (order_id, product_id, quantity, subtotal) VALUES (%(order_id)s, %(product_id)s, %(quantity)s, %(subtotal)s) RETURNING order_items.order_item_id
+shop_app  | 2026-04-16 09:53:19,577 INFO sqlalchemy.engine.Engine [generated in 0.00010s] {'order_id': 1, 'product_id': 1, 'quantity': 1, 'subtotal': Decimal('50000.00')}
+shop_app  | 2026-04-16 09:53:19,579 INFO sqlalchemy.engine.Engine SELECT products.product_id AS products_product_id, products.product_name AS products_product_name, products.price AS products_price 
+shop_app  | FROM products 
+shop_app  | WHERE products.product_id = %(pk_1)s
+shop_app  | 2026-04-16 09:53:19,579 INFO sqlalchemy.engine.Engine [cached since 0.002934s ago] {'pk_1': 2}
+shop_app  | 2026-04-16 09:53:19,580 INFO sqlalchemy.engine.Engine UPDATE orders SET total_amount=%(total_amount)s WHERE orders.order_id = %(orders_order_id)s
+shop_app  | 2026-04-16 09:53:19,580 INFO sqlalchemy.engine.Engine [generated in 0.00011s] {'total_amount': Decimal('53000.00'), 'orders_order_id': 1}
+shop_app  | 2026-04-16 09:53:19,581 INFO sqlalchemy.engine.Engine INSERT INTO order_items (order_id, product_id, quantity, subtotal) VALUES (%(order_id)s, %(product_id)s, %(quantity)s, %(subtotal)s) RETURNING order_items.order_item_id
+shop_app  | 2026-04-16 09:53:19,581 INFO sqlalchemy.engine.Engine [cached since 0.003709s ago] {'order_id': 1, 'product_id': 2, 'quantity': 2, 'subtotal': Decimal('3000.00')}
+shop_app  | 2026-04-16 09:53:19,582 INFO sqlalchemy.engine.Engine COMMIT
+shop_app  | 2026-04-16 09:53:19,585 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+shop_app  | 2026-04-16 09:53:19,585 INFO sqlalchemy.engine.Engine SELECT orders.order_id AS orders_order_id, orders.customer_id AS orders_customer_id, orders.order_date AS orders_order_date, orders.total_amount AS orders_total_amount 
+shop_app  | FROM orders 
+shop_app  | WHERE orders.order_id = %(pk_1)s
+shop_app  | 2026-04-16 09:53:19,586 INFO sqlalchemy.engine.Engine [generated in 0.00013s] {'pk_1': 1}
+shop_app  | Заказ #1 успешно создан. Сумма: 53000.00
+shop_app  | 2026-04-16 09:53:19,586 INFO sqlalchemy.engine.Engine ROLLBACK
+shop_app  | 
+shop_app  | === Сценарий 2: Обновление email ===
+shop_app  | 2026-04-16 09:53:19,587 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+shop_app  | 2026-04-16 09:53:19,588 INFO sqlalchemy.engine.Engine SELECT customers.customer_id AS customers_customer_id, customers.first_name AS customers_first_name, customers.last_name AS customers_last_name, customers.email AS customers_email 
+shop_app  | FROM customers 
+shop_app  | WHERE customers.customer_id = %(pk_1)s
+shop_app  | 2026-04-16 09:53:19,588 INFO sqlalchemy.engine.Engine [generated in 0.00015s] {'pk_1': 1}
+shop_app  | 2026-04-16 09:53:19,590 INFO sqlalchemy.engine.Engine UPDATE customers SET email=%(email)s WHERE customers.customer_id = %(customers_customer_id)s
+shop_app  | 2026-04-16 09:53:19,590 INFO sqlalchemy.engine.Engine [generated in 0.00010s] {'email': 'new_ivan@example.com', 'customers_customer_id': 1}
+shop_app  | 2026-04-16 09:53:19,590 INFO sqlalchemy.engine.Engine COMMIT
+shop_app  | Email клиента #1 обновлён на new_ivan@example.com
+shop_app  | 
+shop_app  | === Сценарий 3: Добавление продукта ===
+shop_app  | 2026-04-16 09:53:19,593 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+shop_app  | 2026-04-16 09:53:19,593 INFO sqlalchemy.engine.Engine INSERT INTO products (product_name, price) VALUES (%(product_name)s, %(price)s) RETURNING products.product_id
+shop_app  | 2026-04-16 09:53:19,593 INFO sqlalchemy.engine.Engine [generated in 0.00009s] {'product_name': 'Клавиатура', 'price': Decimal('2500.00')}
+shop_app  | 2026-04-16 09:53:19,594 INFO sqlalchemy.engine.Engine COMMIT
+shop_app  | 2026-04-16 09:53:19,597 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+shop_app  | 2026-04-16 09:53:19,598 INFO sqlalchemy.engine.Engine SELECT products.product_id AS products_product_id, products.product_name AS products_product_name, products.price AS products_price 
+shop_app  | FROM products 
+shop_app  | WHERE products.product_id = %(pk_1)s
+shop_app  | 2026-04-16 09:53:19,598 INFO sqlalchemy.engine.Engine [generated in 0.00010s] {'pk_1': 3}
+shop_app  | Продукт 'Клавиатура' добавлен с id=3
+shop_app  | 2026-04-16 09:53:19,598 INFO sqlalchemy.engine.Engine ROLLBACK
+shop_app  | 
+shop_app  | === Все сценарии успешно выполнены ===
